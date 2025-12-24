@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #34567e 0%, #1d1591 100%);
+            color: #c7d5e0;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #171a21;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* position: fixed; 
+            top: 0; 
+            left: 0;
+            right: 0; */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #c7d5e0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #0e72ab;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .install-steam {
+            background-color: #11d30d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            font-weight: bold;
+            cursor: pointer;
+            
+        }
+
+        .install-steam:hover {
+            background-color: #108c39;
+        }
+
+        .login {
+            color: #b8b6b4;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .conG{
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(26, 25, 42));
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .conG h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .conG p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #00adee;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .cta-button:hover {
+            background-color: #14769d;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #fff;
+            border-left: 4px solid #66c0f4;
+            padding-left: 15px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .game-card {
+            background-color: #2a475e;
+            border-radius: 8px;
+        }
+
+        .game-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 140px;
+        }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background-color: rgba(6, 51, 78, 0.2);
+            color: #3285e4;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .game-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #acdbf5;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background-color: rgba(49, 85, 116, 0.6);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            background-color: rgba(48, 102, 146, 0.9);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #66c0f4;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #ead5d5;
+        }
+        .categories-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .category {
+            font-size: 18px;
+            padding: 12px;
+            margin: 8px 0;
+            border-left: 4px solid #4a6fa5;
+            background-color: #f8f9fa;
+        }
+        
+        .category:hover {
+            background-color: #e9ecef;
+        }
+        .category-box {
+            background: linear-gradient(135deg, 
+                rgba(42, 71, 94, 0.8) 0%, 
+                rgba(27, 40, 56, 0.8) 100%);
+            border: 1px solid rgba(102, 192, 244, 0.1);
+            border-radius: 3px;
+            padding: 25px 30px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            position: relative;
+
+        }
+        
+        .category-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(102, 192, 244, 0.1), ;
+        }
+        
+        .category-box:hover {
+            background: linear-gradient(135deg, 
+                rgba(42, 71, 94, 1) 0%, 
+                rgba(27, 40, 56, 1) 100%);
+            border-color: rgba(102, 192, 244, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-box:hover::before {
+            left: 100%;
+        }
+        
+        .category-name {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .category-box:hover .category-name {
+            color: #66c0f4;
+        }
+
+        .category-box.selected {
+            background: linear-gradient(135deg, 
+                rgba(0, 173, 238, 0.15) 0%, 
+                rgba(2, 114, 170, 0.15) 100%);
+            border-color: #10b6f2;
+        }
+        
+        .category-box.selected .category-name {
+            color: #00adee;
+        }
+        
+        .game-count {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            background: rgba(15, 90, 134, 0.2);
+            color: #3fa3dc;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+         footer {
+            background-color: #171a21;
+            padding: 40px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #8f98a0;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: #3ca2dd;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #2a3d4f;
+            color: #8f98a0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 770px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px;
+            }
+            
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .conG h2 {
+                font-size: 36px;
+            }
+            
+            .conG p {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-steam" style="color: #00adee; font-size: 32px;"></i>
+            <h1>STEAM</h1>
+        </div>
+        
+        <!-- показвает что можно нажать -->
+        <nav> 
+            <ul>
+                <li><a href="#"><i class="fas fa-store"></i> Магазин</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Сообщество</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Профиль</a></li>
+                <li><a href="#"><i class="fas fa-comments"></i> Обсуждения</a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> Поддержка</a></li>
+            </ul>
+        </nav>
+        
+        <div class="user-section">
+            <button class="install-steam">
+                <i class="fas fa-download"></i> Установить Steam
+            </button>
+            <a href="#" class="login">Войти</a>
+        </div>
+    </header>
+    <div class="container">
+
+        <section class="conG">
+            <h2>Лучшие игры для ПК</h2>
+            <p>Откройте для себя тысячи игр, активное сообщество игроков. </p>
+            <a href="#" class="cta-button">Исследовать магазин</a>
+        </section>
+
+        <h2 class="section-title">Популярные игры</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <img src="/imges/Cb.png" alt = "Игра 1" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Cyberpunk 2077</h3>
+                    <div class="game-tags">
+                        <span class="tag">RPG</span>
+                        <span class="tag">Открытый мир</span>
+                        <span class="tag">Киберпанк</span>
+                    </div>
+                    <div class="game-price">2 499 ₽</div>
+                </div>
+            </div>
+                       <div class="game-card">
+                <img src="imges/KC.png" alt="Игра 2" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Counter-Strike 2</h3>
+                    <div class="game-tags">
+                        <span class="tag">Шутер</span>
+                        <span class="tag">Мультиплеер</span>
+                        <span class="tag">Тактический</span>
+                    </div>
+                    <div class="game-price">Бесплатно</div>
+                </div>
+            </div>
+                <div class="game-card">
+                <img src="imges/Dota.png" alt="Игра 3" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">DOTA 2</h3>
+                    <div class="game-tags">
+                        <span class="tag">Мультиплеер</span>
+                        <span class="tag">Бесплатно</span>
+                        <span class="tag">Гореть</span>
+                    </div>
+                    <div class="game-price">Бесплатно</div>
+                </div>
+            </div>
+            <div class="game-card">
+                 <img src="imges/Portal 2.png" alt="Игра 3" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Portal 2</h3>
+                    <div class="game-tags">
+                        <span class="tag">Together</span>
+                        <span class="tag">Фэнтези</span>
+                        <span class="tag">Прохождение</span>
+                    </div>
+                    <div class="game-price">2 000 ₽</div>
+                </div>
+            </div>
+            <div class="game-card">
+                 <img src="imges/Tank.png" alt="Игра 3" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">World of Tanks</h3>
+                    <div class="game-tags">
+                        <span class="tag">Together</span>
+                        <span class="tag">Мясо</span>
+                        <span class="tag">Развитие веток</span>
+                    </div>
+                    <div class="game-price">5 000 ₽</div>
+                </div>
+            </div>
+            <div class="game-card">
+                 <img src="imges/Rise.png" alt="Игра 4" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Rise of Kingdoms</h3>
+                    <div class="game-tags">
+                        <span class="tag">PPG</span>
+                        <span class="tag">Стратегия</span>
+                        <span class="tag">Открытый мир </span>
+                    </div>
+                    <div class="game-price">Бесплатно</div>
+                </div>
+            </div>
+             <div class="game-card">
+                 <img src="imges/Spotify.png" alt="Игра 5" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Spotify</h3>
+                    <div class="game-tags">
+                        <span class="tag">Слушать</span>
+                        <span class="tag">Платно</span>
+                        <span class="tag">Зарубежные</span>
+                    </div>
+                    <div class="game-price"> 7 999 ₽</div>
+                </div>
+            </div>
+              <div class="game-card">
+                 <img src="imges/Assassins.png" alt="Игра 6" class="game-image">
+                <div class="game-info">
+                    <h3 class="game-title">Assassins Odessey</h3>
+                    <div class="game-tags">
+                        <span class="tag">PVP</span>
+                        <span class="tag">Откртый мир </span>
+                        <span class="tag">Стратегия</span>
+                    </div>
+                    <div class="game-price"> 4 999 ₽</div>
+                </div>
+            </div>
+        
+        </div>
+        <h2 class="section-title">Почему выбирают Steam</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3 class="feature-title">Огромная библиотека</h3>
+                <p>Более 50 000 игр разных жанров</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h3 class="feature-title">Большие скидки</h3>
+                <p>Регулярные распродажи со скидками до 90% на лучшие игры.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="feature-title">Активное сообщество</h3>
+                <p>Общайтесь с друзьями, присоединяйтесь к группам и делитесь достижениями.</p>
+            </div>
+        </div>
+         <h2 class="section-title">Категории</h2>
+        <div class="category-box">
+            <div class="category-name">ГОРОДА И КОЛОНИЗАЦИЯ</div>
+            <div class="game-count">1.2K игр</div>
+        </div>
+        
+        <div class="category-box">
+            <div class="category-name">РОЛЕВЫЕ ИГРЫ</div>
+            <div class="game-count">3.5K игр</div>
+        </div>
+        
+        <div class="category-box">
+            <div class="category-name">ОТКРЫТЫЙ МИР</div>
+            <div class="game-count">2.8K игр</div>
+        </div>
+        
+        <div class="category-box">
+            <div class="category-name">АНИМЕ</div>
+            <div class="game-count">850 игр</div>
+        </div>
+        
+        <div class="category-box">
+            <div class="category-name">СТРАТЕГИЯ</div>
+            <div class="game-count">2.1K игр</div>
+        </div>
+        <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>О Steam</h3>
+                <ul>
+                    <li><a href="#">О компании</a></li>
+                    <li><a href="#">Работа в Steam</a></li>
+                    <li><a href="#">Пресс-центр</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Правила</h3>
+                <ul>
+                    <li><a href="#">Условия использования</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Возврат средств</a></li>
+                    <li><a href="#">Правила сообщества</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ссылки</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Платформы</h3>
+                <ul>
+                    <li><a href="#">Steam для Windows</a></li>
+                    <li><a href="#">Steam для macOS</a></li>
+                    <li><a href="#">Steam для Linux</a></li>
+                    <li><a href="#">Мобильное приложение</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+       
+
+</body>
+</html>
