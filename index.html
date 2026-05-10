@@ -18,29 +18,26 @@
             color: #c7d5e0;
             min-height: 100vh;
         }
+
         header {
             background-color: #171a21;
             padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* position: fixed; 
-            top: 0; 
-            left: 0;
-            right: 0; */
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
+            cursor: pointer;
         }
 
         .logo h1 {
             color: #fff;
             font-size: 24px;
             font-weight: bold;
-
         }
 
         nav ul {
@@ -54,10 +51,19 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
 
         nav a:hover {
             color: #0e72ab;
+            background-color: rgba(14, 114, 171, 0.1);
+        }
+
+        nav a.active {
+            color: #66c0f4;
+            background-color: rgba(102, 192, 244, 0.1);
         }
 
         .user-section {
@@ -74,27 +80,35 @@
             border-radius: 3px;
             font-weight: bold;
             cursor: pointer;
-            
+            transition: all 0.3s ease;
         }
 
         .install-steam:hover {
             background-color: #108c39;
+            transform: translateY(-2px);
         }
 
         .login {
             color: #b8b6b4;
             text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
+
+        .login:hover {
+            color: #fff;
+            background-color: rgba(255,255,255,0.1);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px;
         }
 
-        .conG{
+        .conG {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(26, 25, 42));
-            background-size: cover;
-            background-position: center;
             border-radius: 10px;
             padding: 60px 40px;
             text-align: center;
@@ -123,12 +137,16 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
         .cta-button:hover {
             background-color: #14769d;
+            transform: translateY(-3px);
         }
-        
+
         .section-title {
             font-size: 28px;
             margin-bottom: 25px;
@@ -147,15 +165,25 @@
         .game-card {
             background-color: #2a475e;
             border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .game-card:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .game-card.selected {
+            box-shadow: 0 0 20px rgba(102, 192, 244, 0.6);
+            border: 2px solid #66c0f4;
         }
 
         .game-image {
             width: 100%;
             height: 140px;
+            object-fit: cover;
         }
 
         .game-info {
@@ -182,6 +210,13 @@
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: #3285e4;
+            color: white;
         }
 
         .game-price {
@@ -189,6 +224,7 @@
             font-weight: bold;
             color: #acdbf5;
         }
+
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -201,10 +237,13 @@
             border-radius: 8px;
             padding: 30px;
             text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .feature-card:hover {
             background-color: rgba(48, 102, 146, 0.9);
+            transform: translateY(-5px);
         }
 
         .feature-icon {
@@ -218,25 +257,7 @@
             margin-bottom: 15px;
             color: #ead5d5;
         }
-        .categories-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .category {
-            font-size: 18px;
-            padding: 12px;
-            margin: 8px 0;
-            border-left: 4px solid #4a6fa5;
-            background-color: #f8f9fa;
-        }
-        
-        .category:hover {
-            background-color: #e9ecef;
-        }
+
         .category-box {
             background: linear-gradient(135deg, 
                 rgba(42, 71, 94, 0.8) 0%, 
@@ -247,40 +268,15 @@
             margin-bottom: 15px;
             cursor: pointer;
             position: relative;
+            overflow: hidden;
+        }
 
-        }
-        
-        .category-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(102, 192, 244, 0.1), ;
-        }
-        
         .category-box:hover {
             background: linear-gradient(135deg, 
                 rgba(42, 71, 94, 1) 0%, 
                 rgba(27, 40, 56, 1) 100%);
             border-color: rgba(102, 192, 244, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .category-box:hover::before {
-            left: 100%;
-        }
-        
-        .category-name {
-            color: #ffffff;
-            font-size: 20px;
-            font-weight: 500;
-            position: relative;
-        }
-        
-        .category-box:hover .category-name {
-            color: #66c0f4;
+            transform: translateX(10px);
         }
 
         .category-box.selected {
@@ -289,11 +285,17 @@
                 rgba(2, 114, 170, 0.15) 100%);
             border-color: #10b6f2;
         }
-        
+
+        .category-name {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
         .category-box.selected .category-name {
             color: #00adee;
         }
-        
+
         .game-count {
             position: absolute;
             right: 30px;
@@ -303,9 +305,178 @@
             padding: 3px 10px;
             border-radius: 20px;
             font-size: 14px;
-            font-weight: 400;
         }
-         footer {
+        .price-filter {
+            background: rgba(42, 71, 94, 0.6);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(102, 192, 244, 0.2);
+        }
+
+        .price-filter h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .slider-track {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 6px;
+            background: rgba(102, 192, 244, 0.2);
+            border-radius: 3px;
+        }
+
+        .slider-fill {
+            position: absolute;
+            top: 50%;
+            height: 6px;
+            background: linear-gradient(90deg, #66c0f4, #00adee);
+            border-radius: 3px;
+        }
+
+        .slider-thumb {
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: #66c0f4;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(102, 192, 244, 0.5);
+        }
+
+        .slider-thumb:active {
+            cursor: grabbing;
+        }
+
+        .price-display {
+            display: flex;
+            justify-content: space-between;
+            color: #66c0f4;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid rgba(102, 192, 244, 0.2);
+            border-radius: 8px;
+            background: rgba(42, 71, 94, 0.6);
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #66c0f4;
+        }
+
+        .search-input::placeholder {
+            color: #8f98a0;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            color: #3d038f;
+            font-size: 18px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2a475e, #1b2838);
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid rgba(102, 192, 244, 0.3);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #8f98a0;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-title {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .modal-form input,
+        .modal-form button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid rgba(102, 192, 244, 0.3);
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .modal-form input:focus {
+            outline: none;
+            border-color: #66c0f4;
+        }
+
+        .modal-form button {
+            background: #00adee;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-form button:hover {
+            background: #14769d;
+        }
+
+        footer {
             background-color: #171a21;
             padding: 40px;
             margin-top: 50px;
@@ -315,8 +486,20 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         .footer-column h3 {
@@ -334,12 +517,12 @@
         }
 
         .footer-column a {
-            color: #8f98a0;
+            color: #a5a7a9;
             text-decoration: none;
         }
 
         .footer-column a:hover {
-            color: #3ca2dd;
+            color: #0015cd;
         }
 
         .copyright {
@@ -350,69 +533,76 @@
             color: #8f98a0;
             font-size: 14px;
         }
-
-        @media (max-width: 770px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
-                padding: 15px;
-            }
-            
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            
-            .conG h2 {
-                font-size: 36px;
-            }
-            
-            .conG p {
-                font-size: 16px;
-            }
-        }
-
     </style>
+<base target="_blank">
 </head>
 <body>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 class="modal-title">Вход в Steam</h2>
+            <form class="modal-form" id="loginForm">
+                <input type="text" placeholder="Имя пользователя" id="usernameInput" required>
+                <input type="password" placeholder="Пароль" id="passwordInput" required>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+
     <header>
-        <div class="logo">
+        <div class="logo" id="logo">
             <i class="fas fa-steam" style="color: #00adee; font-size: 32px;"></i>
             <h1>STEAM</h1>
         </div>
         
-        <!-- показвает что можно нажать -->
         <nav> 
             <ul>
-                <li><a href="#"><i class="fas fa-store"></i> Магазин</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Сообщество</a></li>
-                <li><a href="#"><i class="fas fa-user"></i> Профиль</a></li>
-                <li><a href="#"><i class="fas fa-comments"></i> Обсуждения</a></li>
-                <li><a href="#"><i class="fas fa-question-circle"></i> Поддержка</a></li>
+                <li><a href="#" class="nav-link" data-section="store"><i class="fas fa-store"></i> Магазин</a></li>
+                <li><a href="#" class="nav-link" data-section="community"><i class="fas fa-users"></i> Сообщество</a></li>
+                <li><a href="#" class="nav-link" data-section="profile"><i class="fas fa-user"></i> Профиль</a></li>
+                <li><a href="#" class="nav-link" data-section="discussions"><i class="fas fa-comments"></i> Обсуждения</a></li>
+                <li><a href="#" class="nav-link" data-section="support"><i class="fas fa-question-circle"></i> Поддержка</a></li>
             </ul>
         </nav>
         
         <div class="user-section">
-            <button class="install-steam">
+            <button class="install-steam" id="installBtn">
                 <i class="fas fa-download"></i> Установить Steam
             </button>
-            <a href="#" class="login">Войти</a>
+            <a href="#" class="login" id="loginBtn">Войти</a>
         </div>
     </header>
-    <div class="container">
 
+    <div class="container">
         <section class="conG">
             <h2>Лучшие игры для ПК</h2>
-            <p>Откройте для себя тысячи игр, активное сообщество игроков. </p>
-            <a href="#" class="cta-button">Исследовать магазин</a>
+            <p>Откройте для себя тысячи игр, активное сообщество игроков.</p>
+            <a href="#" class="cta-button" id="exploreBtn">Исследовать магазин</a>
         </section>
 
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Поиск игр...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="price-filter">
+            <h3><i class="fas fa-sliders-h"></i> Фильтр по цене</h3>
+            <div class="slider-container" id="priceSlider">
+                <div class="slider-track"></div>
+                <div class="slider-fill" id="sliderFill" style="left: 0%; width: 100%"></div>
+                <div class="slider-thumb" id="sliderThumb1" style="left: 0%"></div>
+                <div class="slider-thumb" id="sliderThumb2" style="left: 100%"></div>
+            </div>
+            <div class="price-display">
+                <span id="minPrice">0 ₽</span>
+                <span id="maxPrice">8000 ₽</span>
+            </div>
+        </div>
+
         <h2 class="section-title">Популярные игры</h2>
-        <div class="games-grid">
-            <div class="game-card">
-                <img src="/imges/Cb.png" alt = "Игра 1" class="game-image">
+        <div class="games-grid" id="gamesGrid">
+            <div class="game-card" data-price="2499" data-title="Cyberpunk 2077">
+                <img src=imges/Cb.png alt="Игра 1" class="game-image">
                 <div class="game-info">
                     <h3 class="game-title">Cyberpunk 2077</h3>
                     <div class="game-tags">
@@ -423,8 +613,8 @@
                     <div class="game-price">2 499 ₽</div>
                 </div>
             </div>
-                       <div class="game-card">
-                <img src="imges/KC.png" alt="Игра 2" class="game-image">
+            <div class="game-card" data-price="0" data-title="Counter-Strike 2">
+                <img src=imges/KC.png alt="Игра 2" class="game-image">
                 <div class="game-info">
                     <h3 class="game-title">Counter-Strike 2</h3>
                     <div class="game-tags">
@@ -435,8 +625,8 @@
                     <div class="game-price">Бесплатно</div>
                 </div>
             </div>
-                <div class="game-card">
-                <img src="imges/Dota.png" alt="Игра 3" class="game-image">
+            <div class="game-card" data-price="0" data-title="DOTA 2">
+                <img src=imges/Dota.png  alt="Игра 3" class="game-image">
                 <div class="game-info">
                     <h3 class="game-title">DOTA 2</h3>
                     <div class="game-tags">
@@ -447,8 +637,8 @@
                     <div class="game-price">Бесплатно</div>
                 </div>
             </div>
-            <div class="game-card">
-                 <img src="imges/Portal 2.png" alt="Игра 3" class="game-image">
+            <div class="game-card" data-price="2000" data-title="Portal 2">
+                <img src="imges/Portal 2.png" alt="Игра 4" class="game-image">
                 <div class="game-info">
                     <h3 class="game-title">Portal 2</h3>
                     <div class="game-tags">
@@ -459,8 +649,8 @@
                     <div class="game-price">2 000 ₽</div>
                 </div>
             </div>
-            <div class="game-card">
-                 <img src="imges/Tank.png" alt="Игра 3" class="game-image">
+            <div class="game-card" data-price="5000" data-title="World of Tanks">
+                <img src=imges/Tank.png alt="Игра 5" class="game-image">
                 <div class="game-info">
                     <h3 class="game-title">World of Tanks</h3>
                     <div class="game-tags">
@@ -471,20 +661,20 @@
                     <div class="game-price">5 000 ₽</div>
                 </div>
             </div>
-            <div class="game-card">
-                 <img src="imges/Rise.png" alt="Игра 4" class="game-image">
+            <div class="game-card" data-price="0" data-title="Rise of Kingdoms">
+                <img src= imges/Rise.png alt="Игра 6" class="game-image">
                 <div class="game-info">
                     <h3 class="game-title">Rise of Kingdoms</h3>
                     <div class="game-tags">
                         <span class="tag">PPG</span>
                         <span class="tag">Стратегия</span>
-                        <span class="tag">Открытый мир </span>
+                        <span class="tag">Открытый мир</span>
                     </div>
                     <div class="game-price">Бесплатно</div>
                 </div>
             </div>
-             <div class="game-card">
-                 <img src="imges/Spotify.png" alt="Игра 5" class="game-image">
+            <div class="game-card" data-price="7999" data-title="Spotify">
+                <img src=imges/Spotify.png alt="Игра 7" class="game-image">
                 <div class="game-info">
                     <h3 class="game-title">Spotify</h3>
                     <div class="game-tags">
@@ -492,26 +682,26 @@
                         <span class="tag">Платно</span>
                         <span class="tag">Зарубежные</span>
                     </div>
-                    <div class="game-price"> 7 999 ₽</div>
+                    <div class="game-price">7 999 ₽</div>
                 </div>
             </div>
-              <div class="game-card">
-                 <img src="imges/Assassins.png" alt="Игра 6" class="game-image">
+            <div class="game-card" data-price="4999" data-title="Assassins Odyssey">
+                <img src=imges/Assassins.png alt="Игра 8" class="game-image">
                 <div class="game-info">
-                    <h3 class="game-title">Assassins Odessey</h3>
+                    <h3 class="game-title">Assassins Odyssey</h3>
                     <div class="game-tags">
                         <span class="tag">PVP</span>
-                        <span class="tag">Откртый мир </span>
+                        <span class="tag">Открытый мир</span>
                         <span class="tag">Стратегия</span>
                     </div>
-                    <div class="game-price"> 4 999 ₽</div>
+                    <div class="game-price">4 999 ₽</div>
                 </div>
             </div>
-        
         </div>
+
         <h2 class="section-title">Почему выбирают Steam</h2>
         <div class="features">
-            <div class="feature-card">
+            <div class="feature-card" data-feature="library">
                 <div class="feature-icon">
                     <i class="fas fa-gamepad"></i>
                 </div>
@@ -519,7 +709,7 @@
                 <p>Более 50 000 игр разных жанров</p>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" data-feature="discounts">
                 <div class="feature-icon">
                     <i class="fas fa-tags"></i>
                 </div>
@@ -527,7 +717,7 @@
                 <p>Регулярные распродажи со скидками до 90% на лучшие игры.</p>
             </div>
             
-            <div class="feature-card">
+            <div class="feature-card" data-feature="community">
                 <div class="feature-icon">
                     <i class="fas fa-users"></i>
                 </div>
@@ -535,32 +725,35 @@
                 <p>Общайтесь с друзьями, присоединяйтесь к группам и делитесь достижениями.</p>
             </div>
         </div>
-         <h2 class="section-title">Категории</h2>
-        <div class="category-box">
+
+        <h2 class="section-title">Категории</h2>
+        <div class="category-box" data-category="cities">
             <div class="category-name">ГОРОДА И КОЛОНИЗАЦИЯ</div>
             <div class="game-count">1.2K игр</div>
         </div>
         
-        <div class="category-box">
+        <div class="category-box" data-category="rpg">
             <div class="category-name">РОЛЕВЫЕ ИГРЫ</div>
             <div class="game-count">3.5K игр</div>
         </div>
         
-        <div class="category-box">
+        <div class="category-box" data-category="openworld">
             <div class="category-name">ОТКРЫТЫЙ МИР</div>
             <div class="game-count">2.8K игр</div>
         </div>
         
-        <div class="category-box">
+        <div class="category-box" data-category="anime">
             <div class="category-name">АНИМЕ</div>
             <div class="game-count">850 игр</div>
         </div>
         
-        <div class="category-box">
+        <div class="category-box" data-category="strategy">
             <div class="category-name">СТРАТЕГИЯ</div>
             <div class="game-count">2.1K игр</div>
         </div>
-        <footer>
+    </div>
+
+    <footer>
         <div class="footer-content">
             <div class="footer-column">
                 <h3>О Steam</h3>
@@ -602,9 +795,276 @@
                 </ul>
             </div>
         </div>
-    </div>
-    
-       
+        <div class="copyright">
+            <p>© 2026 Valve Corporation. Все права защищены.</p>
+        </div>
+    </footer>
 
+    <script>
+
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginForm = document.getElementById('loginForm');
+
+        function openModal() {
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal();
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('usernameInput').value;
+            alert('Добро пожаловать, ' + username + '!');
+            closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+            
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                navigateCards(e.key);
+            }
+            
+            if (e.key === 'Enter') {
+                const selected = document.querySelector('.game-card.selected');
+                if (selected && document.activeElement.tagName !== 'INPUT') {
+                    const title = selected.querySelector('.game-title').textContent;
+                    alert('Выбрана игра: ' + title);
+                }
+            }
+        });
+
+        let currentCardIndex = -1;
+        function navigateCards(direction) {
+            const cards = Array.from(document.querySelectorAll('.game-card'));
+            if (cards.length === 0) return;
+            
+            if (currentCardIndex === -1) currentCardIndex = 0;
+            cards.forEach(c => c.classList.remove('selected'));
+            
+            const cols = Math.floor(document.querySelector('.games-grid').offsetWidth / 270);
+            
+            switch(direction) {
+                case 'ArrowRight':
+                    currentCardIndex = Math.min(currentCardIndex + 1, cards.length - 1);
+                    break;
+                case 'ArrowLeft':
+                    currentCardIndex = Math.max(currentCardIndex - 1, 0);
+                    break;
+                case 'ArrowDown':
+                    currentCardIndex = Math.min(currentCardIndex + cols, cards.length - 1);
+                    break;
+                case 'ArrowUp':
+                    currentCardIndex = Math.max(currentCardIndex - cols, 0);
+                    break;
+            }
+            
+            cards[currentCardIndex].classList.add('selected');
+            cards[currentCardIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.classList.contains('tag')) {
+                    const tagText = e.target.textContent;
+                    filterByTag(tagText);
+                    return;
+                }
+                
+                document.querySelectorAll('.game-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                if (e.detail === 2) {
+                    const title = this.querySelector('.game-title').textContent;
+                    alert('Добавлено в корзину: ' + title);
+                }
+            });
+
+            card.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                const title = this.querySelector('.game-title').textContent;
+                alert('Контекстное меню для: ' + title);
+            });
+        });
+
+        let selectedCategory = null;
+        document.querySelectorAll('.category-box').forEach(box => {
+            box.addEventListener('click', function() {
+                if (selectedCategory === this) {
+                    this.classList.remove('selected');
+                    selectedCategory = null;
+                    showAllGames();
+                } else {
+                    document.querySelectorAll('.category-box').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedCategory = this;
+                    const category = this.querySelector('.category-name').textContent;
+                    filterGamesByCategory(category);
+                }
+            });
+        });
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const feature = this.querySelector('.feature-title').textContent;
+                alert('Подробнее о: ' + feature);
+            });
+        });
+        document.getElementById('installBtn').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Загрузка...';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-check"></i> Установлено';
+            }, 2000);
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        const slider = document.getElementById('priceSlider');
+        const thumb1 = document.getElementById('sliderThumb1');
+        const thumb2 = document.getElementById('sliderThumb2');
+        const fill = document.getElementById('sliderFill');
+        const minPriceDisplay = document.getElementById('minPrice');
+        const maxPriceDisplay = document.getElementById('maxPrice');
+        
+        let isDragging = false;
+        let currentThumb = null;
+        
+        function updateSlider() {
+            const minPercent = parseFloat(thumb1.style.left);
+            const maxPercent = parseFloat(thumb2.style.left);
+            
+            fill.style.left = minPercent + '%';
+            fill.style.width = (maxPercent - minPercent) + '%';
+            
+            const minVal = Math.round((minPercent / 100) * 8000);
+            const maxVal = Math.round((maxPercent / 100) * 8000);
+            
+            minPriceDisplay.textContent = minVal + ' ₽';
+            maxPriceDisplay.textContent = maxVal + ' ₽';
+            
+            filterGamesByPrice(minVal, maxVal);
+        }
+        
+        function handleSliderMove(e) {
+            if (!isDragging || !currentThumb) return;
+            
+            const rect = slider.getBoundingClientRect();
+            let percent = ((e.clientX - rect.left) / rect.width) * 100;
+            percent = Math.max(0, Math.min(100, percent));
+            
+            if (currentThumb === thumb1) {
+                const maxPercent = parseFloat(thumb2.style.left);
+                percent = Math.min(percent, maxPercent - 5);
+            } else {
+                const minPercent = parseFloat(thumb1.style.left);
+                percent = Math.max(percent, minPercent + 5);
+            }
+            
+            currentThumb.style.left = percent + '%';
+            updateSlider();
+        }
+        
+        [thumb1, thumb2].forEach(thumb => {
+            thumb.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                currentThumb = this;
+                e.preventDefault();
+            });
+        });
+        
+        document.addEventListener('mousemove', handleSliderMove);
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            currentThumb = null;
+        });
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.game-card');
+            
+            cards.forEach(card => {
+                const title = card.dataset.title.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase());
+                
+                if (title.includes(query) || tags.some(t => t.includes(query))) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        function filterGamesByPrice(min, max) {
+            document.querySelectorAll('.game-card').forEach(card => {
+                const price = parseInt(card.dataset.price);
+                if (price >= min && price <= max) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        function filterByTag(tag) {
+            document.querySelectorAll('.game-card').forEach(card => {
+                const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent);
+                if (tags.includes(tag)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        function filterGamesByCategory(category) {
+            const categoryMap = {
+                'РОЛЕВЫЕ ИГРЫ': ['Cyberpunk 2077', 'DOTA 2'],
+                'ОТКРЫТЫЙ МИР': ['Cyberpunk 2077', 'Rise of Kingdoms', 'Assassins Odyssey'],
+                'СТРАТЕГИЯ': ['Rise of Kingdoms', 'Assassins Odyssey'],
+                'АНИМЕ': [],
+                'ГОРОДА И КОЛОНИЗАЦИЯ': []
+            };
+            
+            const allowedGames = categoryMap[category] || [];
+            
+            document.querySelectorAll('.game-card').forEach(card => {
+                const title = card.querySelector('.game-title').textContent;
+                if (allowedGames.includes(title) || allowedGames.length === 0) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        function showAllGames() {
+            document.querySelectorAll('.game-card').forEach(card => {
+                card.style.display = '';
+            });
+        }
+    </script>
 </body>
 </html>
