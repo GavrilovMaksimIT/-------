@@ -1129,6 +1129,8 @@
         function openModal() {
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            const userInput = document.getElementById('usernameInput');
+            if (userInput) userInput.focus();
         }
 
         function closeModal() {
@@ -1154,17 +1156,39 @@
         });
 
         document.addEventListener('keydown', function(e) {
+            const active = document.activeElement;
+            const activeTag = active && active.tagName;
+
             if (e.key === 'Escape') {
                 closeModal();
             }
-            
+
+            const modal = document.getElementById('modalOverlay');
+            if (modal && modal.classList.contains('active') && e.key === 'Enter') {
+                e.preventDefault();
+                if (typeof loginForm.requestSubmit === 'function') loginForm.requestSubmit();
+                else loginForm.submit();
+                return;
+            }
+
+            if (activeTag === 'INPUT' || activeTag === 'TEXTAREA' || (active && active.isContentEditable)) return;
+
+            const carouselEl = document.getElementById('heroCarousel');
+            let carouselVisible = false;
+            if (carouselEl) {
+                const rect = carouselEl.getBoundingClientRect();
+                carouselVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            }
+
             if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                if (carouselVisible) return;
+                e.preventDefault();
                 navigateCards(e.key);
             }
-            
+
             if (e.key === 'Enter') {
                 const selected = document.querySelector('.game-card.selected');
-                if (selected && document.activeElement.tagName !== 'INPUT') {
+                if (selected) {
                     const title = selected.querySelector('.game-title').textContent;
                     alert('Выбрана игра: ' + title);
                 }
@@ -1467,18 +1491,22 @@
             carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
             carousel.addEventListener('mouseleave', startAutoPlay);
             document.addEventListener('keydown', (e) => {
-                if (document.activeElement.tagName === 'INPUT') return;
+                const active = document.activeElement;
+                if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) return;
                 const rect = carousel.getBoundingClientRect();
                 const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
                 if (!isVisible) return;
 
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    prevSlide();
-                } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    nextSlide();
-                }
+                    const k = e.key;
+                    if (k === 'ArrowLeft' || (typeof k === 'string' && k.toLowerCase() === 'a')) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        prevSlide();
+                    } else if (k === 'ArrowRight' || (typeof k === 'string' && k.toLowerCase() === 'd')) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        nextSlide();
+                    }
             });
 
             startAutoPlay();
